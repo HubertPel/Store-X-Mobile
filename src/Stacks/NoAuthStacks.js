@@ -2,6 +2,7 @@ import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import LoginScreen from "../Screens/Login/LoginScreen";
 import RegisterScreeen from "../Screens/Register/RegisterScreeen";
+import RemindPasswordScreen from "../Screens/RemindPassword/RemindPasswordScreen";
 
 const NoAuthStacks = () => {
   const Drawer = createDrawerNavigator();
@@ -35,6 +36,15 @@ const NoAuthStacks = () => {
           }}
         >
           {(props) => <RegisterScreeen {...props} />}
+        </Drawer.Screen>
+        <Drawer.Screen
+          name={"Reminder"}
+          option={{
+            title: "Reminder",
+            gestureEnabled: false,
+          }}
+        >
+          {(props) => <RemindPasswordScreen {...props} />}
         </Drawer.Screen>
       </>
     </Drawer.Navigator>

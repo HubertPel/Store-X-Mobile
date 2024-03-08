@@ -19,7 +19,10 @@ const LoginScreen = () => {
         <View style={styles.space_view}></View>
         <DefaultButton text={"ZALOGUJ SIĘ"} />
         <View style={styles.space_view}></View>
-        <TextButton text={"ZAPOMNIAŁEM HASŁA"} />
+        <TextButton
+          text={"ZAPOMNIAŁEM HASŁA"}
+          onPress={() => navigation.navigate("remind")}
+        />
       </View>
       <View style={styles.login_with_box}>
         <Text>ZALOGUJ KONTEM W</Text>

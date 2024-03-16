@@ -24,14 +24,14 @@ const LoginScreen = () => {
           onClick={() => navigation.navigate("Reminder")}
         />
       </View>
-      <View style={styles.login_with_box}>
+      {/* <View style={styles.login_with_box}>
         <Text>ZALOGUJ KONTEM W</Text>
         <View style={styles.logos_box}>
           <Entypo name={"linkedin-with-circle"} color={"black"} size={30} />
           <Entypo name={"google--with-circle"} color={"black"} size={30} />
           <Entypo name={"facebook-with-circle"} color={"black"} size={30} />
         </View>
-      </View>
+      </View> */}
       <View style={styles.register_button_box}>
         <TextButton
           text={"ZAREJESTRUJ SIĘ"}

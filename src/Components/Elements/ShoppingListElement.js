@@ -9,21 +9,25 @@ import {
 import colors from "../../assets/colors";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import DefaultCheckbox from "../Checkboxes/DefaultCheckbox";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-const ShoppingListOption = () => {
+const ShoppingListOption = (props) => {
   return (
     <View style={styles.list_element}>
-      <View></View>
-      <View>
-        <Text>Marchew</Text>
+      <View style={styles.list_element_checkbox}>
+          <DefaultCheckbox />
       </View>
-      <View>
+      <View style={styles.list_element_product}>
+        <Text style={[props.checked == true ? styles.crossed_text : '']}>Marchew</Text>
+      </View>
+      <View style={styles.list_element_qty}>
         <Text>6</Text>
       </View>
-      <View>
+      <View style={styles.list_element_unit}>
         <Text>szt.</Text>
       </View>
-      <View></View>
+      <View style={styles.list_element_avatar}><FontAwesome name={"user-circle-o"} color={"red"} size={30} /></View>
     </View>
   );
 };
@@ -37,34 +41,36 @@ const ShoppingListElement = () => {
     { text: "Marchew", unit: "szt.", qty: 6 },
     { text: "Marchew", unit: "szt.", qty: 6 },
     { text: "Marchew", unit: "szt.", qty: 6 },
+    { text: "Marchew", unit: "szt.", qty: 6 },
   ]);
   const [showed, setShowed] = useState(false);
 
   const slideIn = () => {
-    let height = products.length * 30;
+    let height = (products.length * 40) + 20;
+
     Animated.timing(heightValue, {
-      toValue: height, // Nowa wartość wysokości
+      toValue: height,
       duration: 500,
-      useNativeDriver: false, // Ustawienie na false, ponieważ nie wszystkie właściwości można animować z użyciem native driver
+      useNativeDriver: false,
     }).start();
     Animated.timing(heightValueBox, {
-      toValue: height, // Nowa wartość wysokości
+      toValue: height,
       duration: 500,
-      useNativeDriver: false, // Ustawienie na false, ponieważ nie wszystkie właściwości można animować z użyciem native driver
+      useNativeDriver: false,
     }).start();
     setShowed(true);
   };
 
   const slideOut = () => {
     Animated.timing(heightValue, {
-      toValue: 0, // Nowa wartość wysokości
+      toValue: 0,
       duration: 500,
-      useNativeDriver: false, // Ustawienie na false, ponieważ nie wszystkie właściwości można animować z użyciem native driver
+      useNativeDriver: false,
     }).start();
     Animated.timing(heightValueBox, {
-      toValue: 0, // Nowa wartość wysokości
+      toValue: 0,
       duration: 500,
-      useNativeDriver: false, // Ustawienie na false, ponieważ nie wszystkie właściwości można animować z użyciem native driver
+      useNativeDriver: false,
     }).start();
     setShowed(false);
   };
@@ -101,13 +107,17 @@ const ShoppingListElement = () => {
           />
         </View>
       </TouchableOpacity>
-      <Animated.View style={{ height: heightValueBox }}>
+      <Animated.View style={[styles.list_options_container, { height: heightValueBox }]}>
         <Animated.View style={[styles.list_options, { height: heightValue }]}>
+          <View style={{height: 10,}}></View>
           <ShoppingListOption />
           <ShoppingListOption />
           <ShoppingListOption />
           <ShoppingListOption />
           <ShoppingListOption />
+          <View style={styles.break_line}></View>
+          <View style={{height: 10}}></View>
+          <ShoppingListOption checked={true}/>
         </Animated.View>
       </Animated.View>
     </View>
@@ -119,6 +129,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 10,
     zIndex: 1,
+    backgroundColor: colors.backgroundColor,
   },
   list_category_container: {
     backgroundColor: colors.darkerGray,
@@ -144,13 +155,44 @@ const styles = StyleSheet.create({
   },
   list_element: {
     flexDirection: "row",
+    height: 40,
   },
+  list_options_container: {
+  },  
   list_options: {
     position: "absolute",
     height: 0,
-    backgroundColor: "red",
     width: "100%",
   },
+  list_element_checkbox: {
+    flex: 0.070,
+  },
+  list_element_product: {
+    flex: 0.53,
+    paddingLeft: 10,
+  },
+  list_element_qty: {
+    flex: 0.1,
+    alignItems: "center",
+  },
+  list_element_unit: {
+    flex: 0.2,
+    alignItems: "center",
+  },
+  list_element_avatar: {
+    flex: 0.2,
+    alignItems: "center",
+  },
+  break_line: {
+    height: 5,
+    width: '100%',
+    borderBottomColor: colors.darkerGray,
+    borderBottomWidth: 1,
+  },
+  crossed_text: {
+    textDecorationLine: 'line-through',
+    textDecorationStyle: 'solid'
+  }
 });
 
 export default ShoppingListElement;

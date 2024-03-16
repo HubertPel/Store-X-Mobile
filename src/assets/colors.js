@@ -4,6 +4,7 @@ const colors = {
   likeBlack: "#404040",
   backgroundColor: "#EEEEEE",
   opacitedGray: "#808080",
+  likeBlack: "#404040"
 };
 
 export default colors;

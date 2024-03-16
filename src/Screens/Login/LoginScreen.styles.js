@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   register_button_box: {
     width: "100%",
-    marginTop: 380,
+    marginTop: 240,
     alignItems: "center",
   },
 });

@@ -17,11 +17,11 @@ const LoginScreen = () => {
         <View style={styles.space_view}></View>
         <DefaultInput text={"Hasło"} />
         <View style={styles.space_view}></View>
-        <DefaultButton text={"ZALOGUJ SIĘ"} />
+        <DefaultButton onPress={() => navigation.navigate("ShoppingList")} text={"ZALOGUJ SIĘ"} />
         <View style={styles.space_view}></View>
         <TextButton
           text={"ZAPOMNIAŁEM HASŁA"}
-          onPress={() => navigation.navigate("remind")}
+          onClick={() => navigation.navigate("Reminder")}
         />
       </View>
       <View style={styles.login_with_box}>

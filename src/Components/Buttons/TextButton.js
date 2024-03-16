@@ -2,6 +2,7 @@ import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import colors from "../../assets/colors";
 import Feather from "react-native-vector-icons/Feather";
+import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 
 const TextButton = (props) => {
   return (
@@ -11,6 +12,9 @@ const TextButton = (props) => {
           <>
             {props.iconFamily == "Feather" && (
               <Feather name={props.icon} color={"black"} size={14} />
+            )}
+            {props.iconFamily == "SimpleLineIcons" && (
+              <SimpleLineIcons name={props.icon} color={"black"} size={14} />
             )}
             {props.iconFamily && props.icon && <> </>}
           </>
@@ -23,6 +27,9 @@ const TextButton = (props) => {
             {props.iconFamily && props.icon && <> </>}
             {props.iconFamily == "Feather" && (
               <Feather name={props.icon} color={"black"} size={14} />
+            )}
+            {props.iconFamily == "SimpleLineIcons" && (
+              <SimpleLineIcons name={props.icon} color={"black"} size={14} />
             )}
           </>
         )}

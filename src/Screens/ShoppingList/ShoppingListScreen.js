@@ -1,12 +1,12 @@
 import React from "react";
 import { Text, View } from "react-native";
-import HomeTemplate from "../../Components/Templates/HomeTemplate";
 import styles from "./ShoppingListScreen.styles";
 import ShoppingListElement from "../../Components/Elements/ShoppingListElement";
+import ShoppingListTemplate from "../../Components/Templates/ShoppingListTemplate";
 
 const ShoppingListScreen = () => {
   return (
-    <HomeTemplate>
+    <ShoppingListTemplate>
       <View style={styles.title_container}>
         <Text>Lista zakupów</Text>
         <Text>2024-07-01</Text>
@@ -15,8 +15,7 @@ const ShoppingListScreen = () => {
         <ShoppingListElement />
         <ShoppingListElement />
       </View>
-      <View></View>
-    </HomeTemplate>
+    </ShoppingListTemplate>
   );
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Text, TextInput, View, StyleSheet } from "react-native";
 const DefaultInput = (props) => {
   return (
-    <View style={styles.box_style}>
+    <View style={[styles.box_style, props.inputStyle]}>
       <Text style={styles.text_style}>{props.text}</Text>
       <TextInput
         value={props.value}

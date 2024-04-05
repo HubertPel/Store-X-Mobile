@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import colors from "../../assets/colors";
+import { ScreenHeight } from "@rneui/base";
 
 const styles = StyleSheet.create({
   title_container: {

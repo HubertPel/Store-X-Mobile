@@ -16,10 +16,12 @@ const ShoppingListOption = (props) => {
   return (
     <View style={styles.list_element}>
       <View style={styles.list_element_checkbox}>
-          <DefaultCheckbox />
+        <DefaultCheckbox checked={props.checked} />
       </View>
       <View style={styles.list_element_product}>
-        <Text style={[props.checked == true ? styles.crossed_text : '']}>Marchew</Text>
+        <Text style={[props.checked == true ? styles.crossed_text : ""]}>
+          Marchew
+        </Text>
       </View>
       <View style={styles.list_element_qty}>
         <Text>6</Text>
@@ -27,7 +29,9 @@ const ShoppingListOption = (props) => {
       <View style={styles.list_element_unit}>
         <Text>szt.</Text>
       </View>
-      <View style={styles.list_element_avatar}><FontAwesome name={"user-circle-o"} color={"red"} size={30} /></View>
+      <View style={styles.list_element_avatar}>
+        <FontAwesome name={"user-circle-o"} color={"red"} size={30} />
+      </View>
     </View>
   );
 };
@@ -36,17 +40,17 @@ const ShoppingListElement = () => {
   const heightValue = useRef(new Animated.Value(0)).current;
   const heightValueBox = useRef(new Animated.Value(0)).current;
   const [products, setProduct] = useState([
-    { text: "Marchew", unit: "szt.", qty: 6 },
-    { text: "Marchew", unit: "szt.", qty: 6 },
-    { text: "Marchew", unit: "szt.", qty: 6 },
-    { text: "Marchew", unit: "szt.", qty: 6 },
-    { text: "Marchew", unit: "szt.", qty: 6 },
-    { text: "Marchew", unit: "szt.", qty: 6 },
+    { text: "Marchew", unit: "szt.", qty: 6, checked: false },
+    { text: "Marchew", unit: "szt.", qty: 6, checked: false },
+    { text: "Marchew", unit: "szt.", qty: 6, checked: false },
+    { text: "Marchew", unit: "szt.", qty: 6, checked: false },
+    { text: "Marchew", unit: "szt.", qty: 6, checked: false },
+    { text: "Marchew", unit: "szt.", qty: 6, checked: true },
   ]);
   const [showed, setShowed] = useState(false);
 
   const slideIn = () => {
-    let height = (products.length * 40) + 20;
+    let height = products.length * 40 + 20;
 
     Animated.timing(heightValue, {
       toValue: height,
@@ -62,11 +66,6 @@ const ShoppingListElement = () => {
   };
 
   const slideOut = () => {
-    Animated.timing(heightValue, {
-      toValue: 0,
-      duration: 500,
-      useNativeDriver: false,
-    }).start();
     Animated.timing(heightValueBox, {
       toValue: 0,
       duration: 500,
@@ -107,17 +106,19 @@ const ShoppingListElement = () => {
           />
         </View>
       </TouchableOpacity>
-      <Animated.View style={[styles.list_options_container, { height: heightValueBox }]}>
+      <Animated.View
+        style={[styles.list_options_container, { height: heightValueBox }]}
+      >
         <Animated.View style={[styles.list_options, { height: heightValue }]}>
-          <View style={{height: 10,}}></View>
+          <View style={{ height: 10 }}></View>
           <ShoppingListOption />
           <ShoppingListOption />
           <ShoppingListOption />
           <ShoppingListOption />
           <ShoppingListOption />
           <View style={styles.break_line}></View>
-          <View style={{height: 10}}></View>
-          <ShoppingListOption checked={true}/>
+          <View style={{ height: 10 }}></View>
+          <ShoppingListOption checked={true} />
         </Animated.View>
       </Animated.View>
     </View>
@@ -157,15 +158,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: 40,
   },
-  list_options_container: {
-  },  
+  list_options_container: {},
   list_options: {
     position: "absolute",
     height: 0,
     width: "100%",
   },
   list_element_checkbox: {
-    flex: 0.070,
+    flex: 0.07,
   },
   list_element_product: {
     flex: 0.53,
@@ -185,14 +185,14 @@ const styles = StyleSheet.create({
   },
   break_line: {
     height: 5,
-    width: '100%',
+    width: "100%",
     borderBottomColor: colors.darkerGray,
     borderBottomWidth: 1,
   },
   crossed_text: {
-    textDecorationLine: 'line-through',
-    textDecorationStyle: 'solid'
-  }
+    textDecorationLine: "line-through",
+    textDecorationStyle: "solid",
+  },
 });
 
 export default ShoppingListElement;

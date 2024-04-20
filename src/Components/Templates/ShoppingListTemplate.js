@@ -10,12 +10,11 @@ import AddProductToListModal from "../Modals/AddProductToListModal";
 const ShoppingListTemplate = (props) => {
   const [showAddProductToListModal, setShowAddProductToListModal] =
     useState(false);
-  console.log(showAddProductToListModal);
 
   return (
     <View style={styles.container}>
       <HomeNavbar />
-      <AddProductToListModal show={showAddProductToListModal} />
+      <AddProductToListModal show={showAddProductToListModal} closePopup={() => setShowAddProductToListModal(false)}/>
       <ScrollView style={styles.scroll_view_container}>
         {props.children}
       </ScrollView>

@@ -28,7 +28,7 @@ const DefaultDrawer = () => {
         <Text>Hubert</Text>
       </View>
       <View style={styles.menu_options}>
-        <TouchableOpacity style={styles.option}>
+        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate("MyData")}>
           <Text>MOJE KONTO</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.option}>

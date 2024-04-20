@@ -2,6 +2,8 @@ import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import ShoppingListScreen from "../Screens/ShoppingList/ShoppingListScreen";
 import DefaultDrawer from "../Components/Drawers/DefaultDrawer";
+import MyDataScreen from "../Screens/MyDataScreen/MyDataScreen";
+import MyAvatarScreen from "../Screens/MyAvatar/MyAvatarScreen";
 
 const AuthStacks = () => {
   const Drawer = createDrawerNavigator();
@@ -27,6 +29,24 @@ const AuthStacks = () => {
           }}
         >
           {(props) => <ShoppingListScreen {...props} />}
+        </Drawer.Screen>
+        <Drawer.Screen
+          name={"MyData"}
+          option={{
+            title: "MyData",
+            gestureEnabled: false,
+          }}
+        >
+          {(props) => <MyDataScreen {...props} />}
+        </Drawer.Screen>
+        <Drawer.Screen
+          name={"MyAvatar"}
+          option={{
+            title: "MyAvatar",
+            gestureEnabled: false,
+          }}
+        >
+          {(props) => <MyAvatarScreen {...props} />}
         </Drawer.Screen>
       </>
     </Drawer.Navigator>

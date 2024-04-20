@@ -9,6 +9,7 @@ import IconButton from "../Buttons/IconButton";
 import Feather from "react-native-vector-icons/Feather";
 import ProductRadio from "../Radios/ProductRadio";
 import NumberInput from "../Inputs/NumberInput";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const AddProductToListModal = (props) => {
   const [qty, setQty] = useState("1");
@@ -41,6 +42,9 @@ const AddProductToListModal = (props) => {
       <View style={styles.modal_container}>
         <View style={styles.modal_title}>
           <Text>DODAJ DO LISTY</Text>
+          <TouchableOpacity style={styles.modal_x_button} onPress={props.closePopup}> 
+            <Feather name={"x"} color={"black"} size={40} />
+          </TouchableOpacity>
         </View>
         <View style={styles.modal_content}>
           <View style={styles.add_new_product_button_container}>
@@ -159,6 +163,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 50,
     paddingTop: 20,
   },
+  modal_x_button: {
+    position: "absolute",
+    left: 120,
+    top: -40,
+  },  
 });
 
 export default AddProductToListModal;

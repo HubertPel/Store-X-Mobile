@@ -4,6 +4,7 @@ import ShoppingListScreen from "../Screens/ShoppingList/ShoppingListScreen";
 import DefaultDrawer from "../Components/Drawers/DefaultDrawer";
 import MyDataScreen from "../Screens/MyDataScreen/MyDataScreen";
 import MyAvatarScreen from "../Screens/MyAvatar/MyAvatarScreen";
+import MyFamilyScreen from "../Screens/MyFamily/MyFamilyScreen";
 
 const AuthStacks = () => {
   const Drawer = createDrawerNavigator();
@@ -47,6 +48,15 @@ const AuthStacks = () => {
           }}
         >
           {(props) => <MyAvatarScreen {...props} />}
+        </Drawer.Screen>
+        <Drawer.Screen
+          name={"MyFamily"}
+          option={{
+            title: "MyFamily",
+            gestureEnabled: false,
+          }}
+        >
+          {(props) => <MyFamilyScreen {...props} />}
         </Drawer.Screen>
       </>
     </Drawer.Navigator>

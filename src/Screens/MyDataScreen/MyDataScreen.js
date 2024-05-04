@@ -9,6 +9,7 @@ import MyAccountTemplate from "../../Components/Templates/MyAccountTemplate";
 const MyDataScreen = () => {
   return (
     <MyAccountTemplate>
+      <View style={styles.title_container}><Text>MOJE DANE</Text></View>
         <View style={styles.inputs_container}>
             <DefaultInput  text={"Imię"} />
             <View style={styles.gap_view} />

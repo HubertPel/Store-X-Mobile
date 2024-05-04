@@ -17,9 +17,9 @@ const MyAccountTemplate = (props) => {
         {props.children}
       </ScrollView>
       <View style={styles.submenu_container}>
-        <TouchableHighlight style={[styles.submenu_button, styles.submenu_button_left, route.name === "MyData" ? styles.submenu_active_button : {}]} onPress={() => navigation.navigate("MyData")}><Text style={styles.submenu_button_text}>Moje{"\n"}dane</Text></TouchableHighlight>
-        <TouchableHighlight style={[styles.submenu_button, route.name === "MyAvatar" ? styles.submenu_active_button : {}]}><Text style={styles.submenu_button_text}  onPress={() => navigation.navigate("MyAvatar")}>Mój{"\n"}awatar</Text></TouchableHighlight>
-        <TouchableHighlight style={[styles.submenu_button,  styles.submenu_button_right]}><Text style={styles.submenu_button_text}>Moja{"\n"}rodzina</Text></TouchableHighlight>
+        <TouchableHighlight style={[styles.submenu_button, styles.submenu_button_left, route.name === "MyData" ? styles.submenu_active_button : {}]} onPress={() => navigation.navigate("MyData")}><Text style={styles.submenu_button_text}>MOJE{"\n"}DANE</Text></TouchableHighlight>
+        <TouchableHighlight style={[styles.submenu_button, route.name === "MyAvatar" ? styles.submenu_active_button : {}]}><Text style={styles.submenu_button_text}  onPress={() => navigation.navigate("MyAvatar")}>MÓJ{"\n"}AWATAR</Text></TouchableHighlight>
+        <TouchableHighlight style={[styles.submenu_button,  route.name === "MyFamily" ? styles.submenu_active_button : {}]}><Text style={styles.submenu_button_text} onPress={() => navigation.navigate("MyFamily")}>MOJA{"\n"}RODZINA</Text></TouchableHighlight>
       </View>
     </View>
   );

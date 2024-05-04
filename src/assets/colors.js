@@ -4,6 +4,7 @@ const colors = {
   likeBlack: "#404040",
   backgroundColor: "#EEEEEE",
   opacitedGray: "#808080",
+  opacitedBlack: "#8F8F8F",
   likeBlack: "#404040"
 };
 

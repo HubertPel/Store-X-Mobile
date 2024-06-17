@@ -23,9 +23,9 @@ const AuthStacks = () => {
     >
       <>
         <Drawer.Screen
-          name={"Login"}
+          name={"ShoppingList"}
           option={{
-            title: "Login",
+            title: "ShoppingList",
             gestureEnabled: false,
           }}
         >

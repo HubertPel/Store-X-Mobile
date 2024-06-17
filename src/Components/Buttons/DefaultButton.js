@@ -4,7 +4,7 @@ import colors from "../../assets/colors";
 
 const DefaultButton = (props) => {
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button} onPress={props.onPress}>
       <Text>{props.text}</Text>
     </TouchableOpacity>
   );

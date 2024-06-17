@@ -28,10 +28,16 @@ const DefaultDrawer = () => {
         <Text>Hubert</Text>
       </View>
       <View style={styles.menu_options}>
-        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate("MyData")}>
+        <TouchableOpacity
+          style={styles.option}
+          onPress={() => navigation.navigate("MyData")}
+        >
           <Text>MOJE KONTO</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate("MyFamily")}>
+        <TouchableOpacity
+          style={styles.option}
+          onPress={() => navigation.navigate("MyFamily")}
+        >
           <Text>MOJA RODZINA</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.option}>
@@ -40,7 +46,10 @@ const DefaultDrawer = () => {
       </View>
       <View style={styles.space}></View>
       <View style={styles.menu_options}>
-        <TouchableOpacity style={styles.option}>
+        <TouchableOpacity
+          style={styles.option}
+          onPress={() => navigation.navigate("ShoppingList")}
+        >
           <Text>LISTA ZAKUPÓW</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.option}>

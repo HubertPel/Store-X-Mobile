@@ -8,6 +8,8 @@ const DefaultInput = (props) => {
         value={props.value}
         onChangeText={props.onChangeText}
         style={styles.input_style}
+        secureTextEntry={props.secureTextEntry ?? false}
+        keyboardType={props.keyboardType ?? "default"}
       />
     </View>
   );

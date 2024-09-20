@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View } from "react-native";
 import styles from "./LoginScreen.styles";
 import DefaultInput from "../../Components/Inputs/DefaultInput";
@@ -6,18 +6,37 @@ import DefaultButton from "../../Components/Buttons/DefaultButton";
 import TextButton from "../../Components/Buttons/TextButton";
 import Entypo from "react-native-vector-icons/Entypo";
 import { useNavigation } from "@react-navigation/native";
+import LoginUser from "../../Hooks/LoginUser";
 
 const LoginScreen = () => {
   const navigation = useNavigation();
+  const { login } = LoginUser();
+  const [loginField, setLoginField] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+
+  const loginUser = () => {
+    let loginData = {
+      login: loginField,
+      password: userPassword,
+    };
+    login(loginData);
+  };
+
   return (
     <View style={styles.login_container}>
       <View style={styles.form_box}>
         <Text style={styles.form_title}>LOGOWANIE</Text>
-        <DefaultInput text={"E-mail (login)"} />
+        <DefaultInput
+          text={"E-mail (login)"}
+          onChangeText={(text) => setLoginField(text)}
+        />
         <View style={styles.space_view}></View>
-        <DefaultInput text={"Hasło"} />
+        <DefaultInput
+          text={"Hasło"}
+          onChangeText={(text) => setUserPassword(text)}
+        />
         <View style={styles.space_view}></View>
-        <DefaultButton onPress={() => navigation.navigate("ShoppingList")} text={"ZALOGUJ SIĘ"} />
+        <DefaultButton onPress={() => loginUser()} text={"ZALOGUJ SIĘ"} />
         <View style={styles.space_view}></View>
         <TextButton
           text={"ZAPOMNIAŁEM HASŁA"}

@@ -1,12 +1,13 @@
 import { StyleSheet } from "react-native";
 import colors from "../../assets/colors";
+import { ScreenHeight } from "@rneui/base";
 
 const styles = StyleSheet.create({
   login_container: {
     paddingTop: 50,
     alignItems: "center",
     backgroundColor: colors.backgroundColor,
-    minHeight: "100%",
+    minHeight: ScreenHeight * 1.05,
   },
   form_box: {
     alignItems: "center",

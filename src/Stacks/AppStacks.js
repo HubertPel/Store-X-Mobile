@@ -4,8 +4,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import NoAuthStack from "./NoAuthStacks";
 import AuthStacks from "./AuthStacks";
+import ErrorModal from "../Components/Modals/ErrorModal";
 const AppStacks = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -14,7 +15,7 @@ const AppStacks = () => {
           <NavigationContainer>
             {isLoggedIn ? <AuthStacks /> : <NoAuthStack />}
           </NavigationContainer>
-          {/*<ErrorModal />*/}
+          <ErrorModal />
         </>
         {/*{isLoading && <Activity />}*/}
       </SafeAreaProvider>

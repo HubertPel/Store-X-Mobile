@@ -56,7 +56,7 @@ const AddFamilyMemberModal = (props) => {
           </View>
 
           <View>
-            <View>
+            <View style={styles.finded_users_text_container}>
               <Text>ZNALEZIONO X UŻYTKOWNIKÓW</Text>
             </View>
             <View>
@@ -126,6 +126,9 @@ const styles = StyleSheet.create({
   search_button_container: {
     paddingTop: 20,
     paddingLeft: 5,
+  },
+  finded_users_text_container: {
+    marginLeft: 20,
   },
 });
 

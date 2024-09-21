@@ -11,8 +11,8 @@ import LoginUser from "../../Hooks/LoginUser";
 const LoginScreen = () => {
   const navigation = useNavigation();
   const { login } = LoginUser();
-  const [loginField, setLoginField] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const [loginField, setLoginField] = useState("hubert.pelechaty@test.pl");
+  const [userPassword, setUserPassword] = useState("123456");
 
   const loginUser = () => {
     let loginData = {
@@ -29,11 +29,14 @@ const LoginScreen = () => {
         <DefaultInput
           text={"E-mail (login)"}
           onChangeText={(text) => setLoginField(text)}
+          value={loginField}
         />
         <View style={styles.space_view}></View>
         <DefaultInput
           text={"Hasło"}
           onChangeText={(text) => setUserPassword(text)}
+          value={userPassword}
+          secureTextEntry={true}
         />
         <View style={styles.space_view}></View>
         <DefaultButton onPress={() => loginUser()} text={"ZALOGUJ SIĘ"} />
@@ -43,7 +46,8 @@ const LoginScreen = () => {
           onClick={() => navigation.navigate("Reminder")}
         />
       </View>
-      {/* <View style={styles.login_with_box}>
+      {/* ikonki logowania fb itd
+      <View style={styles.login_with_box}>
         <Text>ZALOGUJ KONTEM W</Text>
         <View style={styles.logos_box}>
           <Entypo name={"linkedin-with-circle"} color={"black"} size={30} />

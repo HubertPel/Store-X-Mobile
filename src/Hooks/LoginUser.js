@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
 import ApiContext from "../Contexts/ApiContext";
 import ErrorContext from "../Contexts/ErrorContext";
+import UserContext from "../Contexts/UserContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
 const LoginUser = () => {
   const { apiUrl } = useContext(ApiContext);
   const { setShowErrorModal, setErrorModalMessage } = useContext(ErrorContext);
+  const { setIsLoggedIn, setUserToken, setUserName } = useContext(UserContext);
 
   const validateData = async (formData) => {
     let errorArray = [];
@@ -34,8 +38,6 @@ const LoginUser = () => {
       password: formData.password,
     };
 
-    console.log(JSON.stringify(apiRegisterData));
-
     const response = await fetch(apiUrl + "/users/login", {
       method: "POST",
       headers: {
@@ -45,10 +47,52 @@ const LoginUser = () => {
       body: JSON.stringify(apiRegisterData),
     });
 
+    if (!response.ok) {
+      setErrorModalMessage(["Błędny login lub hasło"]);
+      setShowErrorModal(true);
+      return false;
+    }
+
     const responseData = await response.json();
-    console.log(responseData);
+    if (responseData.id) {
+      setUserToken(responseData.id);
+      setUserName(responseData.name);
+
+      await AsyncStorage.setItem("userToken", responseData.id);
+      await AsyncStorage.setItem("userName", responseData.name);
+      await AsyncStorage.setItem("isLoggedIn", "1");
+
+      setIsLoggedIn(true);
+    } else {
+      setErrorModalMessage(["Błędny login lub hasło"]);
+      setShowErrorModal(true);
+      return false;
+    }
   };
-  return { login };
+
+  const checkIfLogged = async () => {
+    const userName = await AsyncStorage.getItem("userName");
+    const userToken = await AsyncStorage.getItem("userToken");
+    const isLoggedIn = await AsyncStorage.getItem("isLoggedIn");
+
+    if (userName && userToken && isLoggedIn) {
+      setUserToken(userToken);
+      setUserName(userName);
+      setIsLoggedIn(true);
+    } else {
+      setUserToken("");
+      setUserName("");
+      setIsLoggedIn(false);
+    }
+  };
+
+  const logoutUser = async () => {
+    setUserToken("");
+    setUserName("");
+    setIsLoggedIn(false);
+  };
+
+  return { login, checkIfLogged, logoutUser };
 };
 
 export default LoginUser;

@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ScreenWidth } from "@rneui/base";
 import colors from "../../assets/colors";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 import { useNavigation } from "@react-navigation/native";
+import UserContext from "../../Contexts/UserContext";
 
 const HomeNavbar = () => {
   const navigation = useNavigation();
+  const { userName } = useContext(UserContext);
+
   return (
     <View style={styles.navbar_container}>
       <TouchableOpacity
@@ -20,8 +23,13 @@ const HomeNavbar = () => {
         <Text style={styles.notifications_text}>POWIADOMIENIA (3)</Text>
       </View>
       <View style={styles.avatar_container}>
-        <FontAwesome name={"user-circle-o"} color={"black"} size={30} />
-        <Text>Hubert</Text>
+        <TouchableOpacity
+          style={styles.avatar_button_container}
+          onPress={() => navigation.navigate("MyData")}
+        >
+          <FontAwesome name={"user-circle-o"} color={"black"} size={30} />
+          <Text>{userName}</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -39,6 +47,9 @@ const styles = StyleSheet.create({
   avatar_container: {
     alignItems: "center",
     flex: 0.2,
+  },
+  avatar_button_container: {
+    alignItems: "center",
   },
   notifications_container: {
     justifyContent: "flex-end",

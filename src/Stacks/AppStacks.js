@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import NoAuthStack from "./NoAuthStacks";
 import AuthStacks from "./AuthStacks";
 import ErrorModal from "../Components/Modals/ErrorModal";
+import UserContext from "../Contexts/UserContext";
+import LoginUser from "../Hooks/LoginUser";
 const AppStacks = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn } = useContext(UserContext);
+  const { checkIfLogged } = LoginUser();
+
+  useEffect(() => {
+    const setup = async () => {
+      checkIfLogged();
+    };
+
+    setup();
+  }, []);
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>

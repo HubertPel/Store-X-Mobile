@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   View,
   Text,
@@ -11,9 +11,19 @@ import Feather from "react-native-vector-icons/Feather";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import TextButton from "../Buttons/TextButton";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
+import UserContext from "../../Contexts/UserContext";
+import LoginUser from "../../Hooks/LoginUser";
 
 const DefaultDrawer = () => {
   const navigation = useNavigation();
+  const { userName } = useContext(UserContext);
+  const { logoutUser } = LoginUser();
+
+  const logoutButtonPressed = async () => {
+    navigation.dispatch(DrawerActions.toggleDrawer());
+    await logoutUser();
+  };
+
   return (
     <View style={styles.drawer_container}>
       <View style={styles.close_container}>
@@ -25,7 +35,7 @@ const DefaultDrawer = () => {
       </View>
       <View style={styles.avatar_container}>
         <FontAwesome name={"user-circle-o"} color={"black"} size={40} />
-        <Text>Hubert</Text>
+        <Text>{userName}</Text>
       </View>
       <View style={styles.menu_options}>
         <TouchableOpacity
@@ -55,7 +65,10 @@ const DefaultDrawer = () => {
         <TouchableOpacity style={styles.option}>
           <Text>HISTORIA</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.option}>
+        <TouchableOpacity
+          style={styles.option}
+          onPress={() => navigation.navigate("Products")}
+        >
           <Text>PRODUKTY</Text>
         </TouchableOpacity>
       </View>
@@ -65,6 +78,7 @@ const DefaultDrawer = () => {
           icon={"logout"}
           iconFamily={"SimpleLineIcons"}
           iconPos={"left"}
+          onClick={() => logoutButtonPressed()}
         />
       </View>
     </View>

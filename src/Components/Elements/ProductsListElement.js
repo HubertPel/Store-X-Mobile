@@ -14,18 +14,19 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 const ProductsListOption = (props) => {
   return (
-    <View style={styles.list_element}>
+    <Animated.View style={[styles.list_element, { height: props.animHeight }]}>
       <View style={styles.list_element_product}>
         <Text style={[props.checked == true ? styles.crossed_text : ""]}>
           Marchew
         </Text>
       </View>
-    </View>
+    </Animated.View>
   );
 };
 const ProductsListElement = () => {
   const heightValue = useRef(new Animated.Value(0)).current;
   const heightValueBox = useRef(new Animated.Value(0)).current;
+  const heightOption = useRef(new Animated.Value(0)).current;
   const [products, setProduct] = useState([
     { text: "Marchew" },
     { text: "Marchew" },
@@ -37,7 +38,7 @@ const ProductsListElement = () => {
   const [showed, setShowed] = useState(false);
 
   const slideIn = () => {
-    let height = products.length * 40 + 20;
+    let height = products.length * 40;
 
     Animated.timing(heightValue, {
       toValue: height,
@@ -49,11 +50,26 @@ const ProductsListElement = () => {
       duration: 500,
       useNativeDriver: false,
     }).start();
+    Animated.timing(heightOption, {
+      toValue: 40,
+      duration: 500,
+      useNativeDriver: false,
+    }).start();
     setShowed(true);
   };
 
   const slideOut = () => {
     Animated.timing(heightValueBox, {
+      toValue: 0,
+      duration: 500,
+      useNativeDriver: false,
+    }).start();
+    Animated.timing(heightValueBox, {
+      toValue: 0,
+      duration: 500,
+      useNativeDriver: false,
+    }).start();
+    Animated.timing(heightOption, {
       toValue: 0,
       duration: 500,
       useNativeDriver: false,
@@ -98,11 +114,11 @@ const ProductsListElement = () => {
       >
         <Animated.View style={[styles.list_options, { height: heightValue }]}>
           <View style={{ height: 10 }}></View>
-          <ProductsListOption />
-          <ProductsListOption />
-          <ProductsListOption />
-          <ProductsListOption />
-          <ProductsListOption />
+          <ProductsListOption animHeight={heightOption} />
+          <ProductsListOption animHeight={heightOption} />
+          <ProductsListOption animHeight={heightOption} />
+          <ProductsListOption animHeight={heightOption} />
+          <ProductsListOption animHeight={heightOption} />
         </Animated.View>
       </Animated.View>
     </View>

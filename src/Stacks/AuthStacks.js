@@ -6,6 +6,8 @@ import MyDataScreen from "../Screens/MyDataScreen/MyDataScreen";
 import MyAvatarScreen from "../Screens/MyAvatar/MyAvatarScreen";
 import MyFamilyScreen from "../Screens/MyFamily/MyFamilyScreen";
 import ProductsScreen from "../Screens/Products/ProductsScreen";
+import DeleteAccountScreen from "../Screens/DeleteAccount/DeleteAccountScreen";
+import AddProductScreen from "../Screens/AddProductScreen/AddProductScreen";
 
 const AuthStacks = () => {
   const Drawer = createDrawerNavigator();
@@ -67,6 +69,24 @@ const AuthStacks = () => {
           }}
         >
           {(props) => <ProductsScreen {...props} />}
+        </Drawer.Screen>
+        <Drawer.Screen
+          name={"DeleteAccount"}
+          option={{
+            title: "DeleteAccount",
+            gestureEnabled: false,
+          }}
+        >
+          {(props) => <DeleteAccountScreen {...props} />}
+        </Drawer.Screen>
+        <Drawer.Screen
+          name={"AddProduct"}
+          option={{
+            title: "AddProduct",
+            gestureEnabled: false,
+          }}
+        >
+          {(props) => <AddProductScreen {...props} />}
         </Drawer.Screen>
       </>
     </Drawer.Navigator>

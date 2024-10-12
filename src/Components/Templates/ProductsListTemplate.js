@@ -5,8 +5,11 @@ import AddProductToListModal from "../Modals/AddProductToListModal";
 import ButtonWithIcon from "../Buttons/ButtonWithIcon";
 import colors from "../../assets/colors";
 import { ScreenWidth } from "@rneui/base";
+import { useNavigation } from "@react-navigation/native";
 
 const ProductsListTemplate = ({ ...props }) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <HomeNavbar />
@@ -21,6 +24,7 @@ const ProductsListTemplate = ({ ...props }) => {
             iconPos={"right"}
             iconFamily={"Feather"}
             icon={"plus"}
+            onPress={() => navigation.navigate("AddProduct")}
           />
         </View>
       </View>

@@ -7,14 +7,22 @@ import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 const TextButton = (props) => {
   return (
     <TouchableOpacity style={styles.button} onPress={props.onClick}>
-      <Text>
+      <Text style={props.styles ?? {}}>
         {props.iconPos == "left" && (
           <>
             {props.iconFamily == "Feather" && (
-              <Feather name={props.icon} color={"black"} size={14} />
+              <Feather
+                name={props.icon}
+                color={props.iconColor ?? "black"}
+                size={14}
+              />
             )}
             {props.iconFamily == "SimpleLineIcons" && (
-              <SimpleLineIcons name={props.icon} color={"black"} size={14} />
+              <SimpleLineIcons
+                name={props.icon}
+                color={props.iconColor ?? "black"}
+                size={14}
+              />
             )}
             {props.iconFamily && props.icon && <> </>}
           </>
@@ -26,10 +34,18 @@ const TextButton = (props) => {
           <>
             {props.iconFamily && props.icon && <> </>}
             {props.iconFamily == "Feather" && (
-              <Feather name={props.icon} color={"black"} size={14} />
+              <Feather
+                name={props.icon}
+                color={props.iconColor ?? "black"}
+                size={14}
+              />
             )}
             {props.iconFamily == "SimpleLineIcons" && (
-              <SimpleLineIcons name={props.icon} color={"black"} size={14} />
+              <SimpleLineIcons
+                name={props.icon}
+                color={props.iconColor ?? "black"}
+                size={14}
+              />
             )}
           </>
         )}

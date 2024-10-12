@@ -3,7 +3,7 @@ import colors from "../../assets/colors";
 
 const styles = StyleSheet.create({
   login_container: {
-    paddingTop: 125,
+    paddingTop: 85,
     alignItems: "center",
     backgroundColor: colors.backgroundColor,
     height: "100%",

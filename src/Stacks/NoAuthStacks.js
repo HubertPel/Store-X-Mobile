@@ -1,25 +1,25 @@
 import React from "react";
-import { createDrawerNavigator } from "@react-navigation/drawer";
 import LoginScreen from "../Screens/Login/LoginScreen";
 import RegisterScreeen from "../Screens/Register/RegisterScreeen";
 import RemindPasswordScreen from "../Screens/RemindPassword/RemindPasswordScreen";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const NoAuthStacks = () => {
-  const Drawer = createDrawerNavigator();
+  const Stack = createNativeStackNavigator();
   return (
-    <Drawer.Navigator
+    <Stack.Navigator
       initialRouteName={"Login"}
       backBehavior={"history"}
       screenOptions={{
         headerShown: false,
-        headerTransparent: true,
+        headerTransparent: false,
         drawerStyle: {
           backgroundColor: "transparent",
         },
       }}
     >
       <>
-        <Drawer.Screen
+        <Stack.Screen
           name={"Login"}
           option={{
             title: "Login",
@@ -27,8 +27,8 @@ const NoAuthStacks = () => {
           }}
         >
           {(props) => <LoginScreen {...props} />}
-        </Drawer.Screen>
-        <Drawer.Screen
+        </Stack.Screen>
+        <Stack.Screen
           name={"Register"}
           option={{
             title: "Register",
@@ -36,8 +36,8 @@ const NoAuthStacks = () => {
           }}
         >
           {(props) => <RegisterScreeen {...props} />}
-        </Drawer.Screen>
-        <Drawer.Screen
+        </Stack.Screen>
+        <Stack.Screen
           name={"Reminder"}
           option={{
             title: "Reminder",
@@ -45,9 +45,9 @@ const NoAuthStacks = () => {
           }}
         >
           {(props) => <RemindPasswordScreen {...props} />}
-        </Drawer.Screen>
+        </Stack.Screen>
       </>
-    </Drawer.Navigator>
+    </Stack.Navigator>
   );
 };
 

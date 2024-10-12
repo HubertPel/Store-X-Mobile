@@ -74,6 +74,15 @@ const DefaultDrawer = () => {
       </View>
       <View style={styles.logout_container}>
         <TextButton
+          text={"USUŃ KONTO"}
+          icon={"trash-2"}
+          iconFamily={"Feather"}
+          iconColor={"red"}
+          iconPos={"left"}
+          styles={{ color: "red" }}
+          onClick={() => navigation.navigate("DeleteAccount")}
+        />
+        <TextButton
           text={"WYLOGUJ SIĘ"}
           icon={"logout"}
           iconFamily={"SimpleLineIcons"}
@@ -113,7 +122,7 @@ const styles = StyleSheet.create({
     height: 75,
   },
   logout_container: {
-    marginTop: 120,
+    marginTop: 80,
     alignItems: "center",
   },
 });

@@ -8,7 +8,7 @@ const ProductsScreen = () => {
   return (
     <ProductsListTemplate>
       <View style={styles.title_container}>
-        <Text>Produkty</Text>
+        <Text>PRODUKTY</Text>
       </View>
       <View style={styles.lists_container}>
         <ProductsListElement />

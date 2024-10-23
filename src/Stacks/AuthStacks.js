@@ -8,6 +8,7 @@ import MyFamilyScreen from "../Screens/MyFamily/MyFamilyScreen";
 import ProductsScreen from "../Screens/Products/ProductsScreen";
 import DeleteAccountScreen from "../Screens/DeleteAccount/DeleteAccountScreen";
 import AddProductScreen from "../Screens/AddProductScreen/AddProductScreen";
+import AddProductFormScreen from "../Screens/AddProductForm/AddProductFormScreen";
 
 const AuthStacks = () => {
   const Drawer = createDrawerNavigator();
@@ -88,6 +89,15 @@ const AuthStacks = () => {
         >
           {(props) => <AddProductScreen {...props} />}
         </Drawer.Screen>
+          <Drawer.Screen
+              name={"AddProductForm"}
+              option={{
+                  title: "AddProductForm",
+                  gestureEnabled: false,
+              }}
+          >
+              {(props) => <AddProductFormScreen {...props} />}
+          </Drawer.Screen>
       </>
     </Drawer.Navigator>
   );

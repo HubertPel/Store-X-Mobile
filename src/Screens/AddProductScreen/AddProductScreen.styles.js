@@ -118,6 +118,18 @@ const styles = StyleSheet.create({
   camera_opacited_bars: {
     opacity: 0.5,
   },
+  search_container: {
+    paddingHorizontal: ScreenWidth * 0.3,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    marginTop: 25 ,
+  },
+  search_input: {
+    width: 225,
+    marginRight: 10,
+  },
 });
 
 export default styles;

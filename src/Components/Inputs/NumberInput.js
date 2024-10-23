@@ -22,7 +22,7 @@ const NumberInput = (props) => {
         <TextInput
           value={props.value}
           onChangeText={props.onChangeText}
-          style={styles.input_style}
+          style={[styles.input_style, props.inputStyle]}
           keyboardType={"number-pad"}
         />
       </View>

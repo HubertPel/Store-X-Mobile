@@ -9,6 +9,11 @@ import CenterButton from "../../Components/Buttons/CenterButton";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import HomeTemplate from "../../Components/Templates/HomeTemplate";
 import { CameraView, CameraType, useCameraPermissions } from "expo-camera";
+import DefaultInput from "../../Components/Inputs/DefaultInput";
+import IconButton from "../../Components/Buttons/IconButton";
+import PlaceholderTextInput from "../../Components/Inputs/PlaceholderTextInput";
+import Feather from "react-native-vector-icons/Feather";
+import {useNavigation} from "@react-navigation/native";
 
 const AddProductScreen = () => {
   const [showCamera, setShowCamera] = useState(false);
@@ -21,6 +26,8 @@ const AddProductScreen = () => {
     alert(`Kod kreskowy zeskanowany! Dane: ${data}`);
   };
 
+  const navigation = useNavigation()
+;
   return (
     <HomeTemplate>
       <View style={styles.title_container}>
@@ -32,6 +39,7 @@ const AddProductScreen = () => {
         <CenterButton
           text={"DODAJ RĘCZNIE"}
           style={styles.center_button_styles}
+          onPress={() => navigation.navigate("AddProductForm")}
         />
       </View>
       <View style={styles.divider_container}>
@@ -111,13 +119,13 @@ const AddProductScreen = () => {
             onPress={() => setShowCamera(true)}
           />
         )}
-        {!scanned && (
+        {(!scanned && showCamera) && (
           <CenterButton
             text={"SKANOWANIE"}
             style={styles.center_button_styles}
           />
         )}
-        {scanned && (
+        {(scanned && showCamera)  && (
           <CenterButton
             text={"SKANUJ NOWY"}
             style={styles.center_button_styles}
@@ -132,7 +140,12 @@ const AddProductScreen = () => {
         </View>
         <View style={styles.divider_line}></View>
       </View>
+        <View style={styles.search_container}>
+            <PlaceholderTextInput inputStyle={styles.search_input} placeholder={"wyszukaj w internecie..."}/>
+            <IconButton icon={<Feather name={"search"} color={"white"} size={25} />}/>
+        </View>
     </HomeTemplate>
+
   );
 };
 
